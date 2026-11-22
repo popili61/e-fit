@@ -1,0 +1,7 @@
+*.pdf
+*.xlsx
+*.xls
+*.json.bak
+efit-yedek-*.json
+Thumbs.db
+desktop.ini
