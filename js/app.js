@@ -997,7 +997,9 @@
   render();
 
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    const reg = () => navigator.serviceWorker.register('sw.js').catch(() => {});
+    if (document.readyState === 'complete') reg(); else window.addEventListener('load', reg);
+    setTimeout(reg, 4000); // yükleme olayı gecikirse yine de kaydol (tekrar kayıt zararsız)
   }
   window.__SH = { get state() { return S; }, render };
 })();
